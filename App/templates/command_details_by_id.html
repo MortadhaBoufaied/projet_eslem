@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Details</title>
+    <!-- Add any additional styles or scripts if needed -->
+</head>
+<body>
+
+    <h1>Command Details</h1>
+
+    {% if command_data %}
+        <div>
+            <strong>ID:</strong> {{ command_data.id }}<br>
+            <strong>Username:</strong> {{ command_data.username }}<br>
+            <strong>Name:</strong> {{ command_data.name }}<br>
+            <strong>Email:</strong> {{ command_data.email }}<br>
+            <strong>Phone:</strong> {{ command_data.phone }}<br>
+            <strong>Object:</strong> {{ command_data.object }}<br>
+            <strong>Service Type:</strong> {{ command_data.service_type }}<br>
+            <strong>Submission Date:</strong> {{ command_data.submission_date }}<br>
+            <strong>Acceptance Date:</strong> {{ command_data.acceptance_date }}<br>
+            <strong>Completion Date:</strong> {{ command_data.completion_date }}<br>
+        </div>
+    {% else %}
+        <p>No command data available.</p>
+    {% endif %}
+
+    <!-- Add any additional content or styling as needed -->
+
+</body>
+</html>

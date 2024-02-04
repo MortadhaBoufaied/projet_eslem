@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        {% load static %}
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Responsive Login and Signup Form</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="{% static 'css_files/style_log.css' %}">
+
+        <!-- Boxicons CSS -->
+        <link
+            href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css'
+            rel='stylesheet'>
+        <!-- Add this line to include Toastify from the web -->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+        <style>
+            .background {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .shape {
+                background: rgb(222, 240, 184);
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 80%);
+                height: 50vh;
+                width: 50%;
+                position: absolute;
+            }
+        </style>
+
+    </head>
+
+    <body>
+        {% block content %}
+            <div class="background">
+                <div class="shape"></div>
+                <div class="shape"></div>
+            </div>
+            <!-- Add these lines to initialize Toastify -->
+            {% if messages %}
+
+                {% for message in messages %}
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+
+                            Toastify({
+                                text: '{{ message }}', duration: 2500, // Display duration in milliseconds
+                                gravity: 'toast-top', // Position of the toast
+                                position: 'right', // Position of the toast
+                                close: true, // Show close button
+                                backgroundColor: '{{ message.tags }}'
+                            }).showToast();
+
+                        });
+                    </script>
+                {% endfor %}
+            {% endif %}
+            <section class="container forms">
+                <div class="form login">
+                    <div class="form-content">
+                        <header>Login</header>
+                        <form action="{% url 'login' %}" method="POST">
+                            {% csrf_token %}
+                            {% for field in form %}
+                                <div class="field input-field">
+                                    {{ field }}
+                                </div>
+                            {% endfor %}
+
+                            <div class="form-link">
+                                <a href="{% url 'password_reset' %}" class="forgot-pass">Forgot password?</a>
+                            </div>
+
+                            <div class="field button-field">
+                                <button type='submit'>Login</button>
+                            </div>
+                        </form>
+
+                        <div class="form-link">
+                            <span>Don't have an account?
+                                <a href="#" class="link signup-link">Signup</a>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="line"></div>
+
+                    <div class="media-options">
+                        <a href="#" class="field facebook">
+                            <i class='bx bxl-facebook facebook-icon'></i>
+                            <span>Login with Facebook</span>
+                        </a>
+                    </div>
+
+                    <div class="media-options">
+                        <a href="#" class="field google">
+                            <img src="{% static 'img/google.png' %}" alt="" class="google-img">
+                            <span>Login with Google</span>
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- Signup Form -->
+
+                <div class="form signup">
+                    <div class="form-content">
+                        <header>Signup</header>
+                        <form method="post" action="{% url 'signup' %}" id="signup-form">
+                            {% csrf_token %}
+                            <div class="field input-field">
+                                <input
+                                    type="text"
+                                    placeholder="Username"
+                                    class="input"
+                                    name="name"
+                                    required="required">
+                            </div>
+
+                            <div class="field input-field">
+                                <input
+                                    type="email"
+                                    placeholder="Email"
+                                    class="input"
+                                    name="email"
+                                    required="required">
+                            </div>
+
+                            <div class="field input-field">
+                                <input
+                                    type="password"
+                                    placeholder="Create password"
+                                    class="password"
+                                    name="password1"
+                                    required="required">
+                            </div>
+
+                            <div class="field input-field">
+                                <input
+                                    type="password"
+                                    placeholder="Confirm password"
+                                    class="password"
+                                    name="password2"
+                                    required="required">
+                                <i class='bx bx-hide eye-icon'></i>
+                            </div>
+
+                            <div class="field button-field">
+                                <button type="submit">Signup</button>
+                            </div>
+                        </form>
+
+                        <div class="form-link">
+                            <span>Already have an account?
+                                <a href="#" class="link login-link">Login</a>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="line"></div>
+
+                    <div class="media-options">
+                        <a href="#" class="field facebook">
+                            <i class='bx bxl-facebook facebook-icon'></i>
+                            <span>Login with Facebook</span>
+                        </a>
+                    </div>
+
+                    <div class="media-options">
+                        <a href="#" class="field google">
+                            <img src="{% static 'img/google.png' %}" alt="" class="google-img">
+                            <span>Login with Google</span>
+                        </a>
+                    </div>
+
+                </div>
+            </section>
+
+            <script src="{% static 'js/script.js' %}"></script>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+        {% endblock %}
+    </body>
+
+</html>

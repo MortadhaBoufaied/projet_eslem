@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% load static %}
+
+        <meta charset="utf-8">
+        <title>Travelsi-Traveux
+        </title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="" name="keywords">
+        <meta content="" name="description">
+
+        <!-- Favicons -->
+        <link href="{% static 'img/favicon.png' %}" rel="icon">
+        <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+        <!-- Bootstrap CSS File -->
+        <link
+            href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}"
+            rel="stylesheet">
+
+        <!-- Libraries CSS Files -->
+        <link
+            href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}"
+            rel="stylesheet">
+        <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+        <link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+        <link
+            href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}"
+            rel="stylesheet">
+        <link href="{% static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
+
+        <!-- Main Stylesheet File -->
+        <link rel="stylesheet" href="{% static 'css_files/style.css' %}">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link  
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700">
+        <!-- Toastr CSS and JS -->
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+
+    </head>
+
+    <body>
+
+        <!--========================== Header ============================-->
+        <header id="header">
+            <div class="container-fluid">
+
+                <div id="logo" class="pull-left">
+                    <h1>
+                        <a href="#intro" class="scrollto">Travelsi-Traveux</a>
+                    </h1>
+                </div>
+
+                <nav id="nav-menu-container">
+                    <ul class="nav-menu">
+                        <li class="menu-active">
+                            <a href="#intro">Accueil</a>
+                        </li>
+                        <li>
+                            <a href="#about">Qui somme-nous</a>
+                        </li>
+                        <li>
+                            <a href="#services">Services</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                            <li>
+                                <a href="#portfolio">Portfolio</a>
+                            </li>
+                            <li>
+                                <a href="#team">Equipe</a>
+                            </li>
+                        {% endif %}
+                        <li>
+                            <a href="#contact">Contact</a>
+                        </li>
+                        {% if user.is_authenticated %}
+                            <li class="menu-has-children">
+                                <a href="{% url 'index' %}">{{user.name}}</a>
+                                <ul
+                                    style="width: 133px; border-radius: 10px; text-alifn: center; position: absolute; left: -15px">
+                                    {% if user.is_admin %}
+                                        <li>
+                                            <a href="{% url 'profile' %}">Profile (Admin)</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'comand_list' %}">Commands</a>
+                                        </li>
+                                    {% else %}
+                                        <li>
+                                            <a href="{% url 'profile' %}">Profile</a>
+                                        </li>
+                                    {% endif %}
+                                    <hr>
+                                    <li>
+                                        <a href="{% url 'logout' %}">logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        {% else %}
+                            <li>
+                                <a href="{% url 'login' %}">login</a>
+                            </li>
+                        {% endif %}
+                    </ul>
+            </ul>
+        </nav>
+        <!-- #nav-menu-container -->
+    </div>
+</header>
+<!-- #header -->
+
+{% if messages %}
+
+    {% for message in messages %}
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+
+                Toastify({
+                    text: '{{ message }}', duration: 5000, // Display duration in milliseconds
+                    gravity: 'toast-top', // Position of the toast
+                    position: 'right', // Position of the toast
+                    close: true, // Show close button
+                    backgroundColor: '{{ message.tags }}'
+                }).showToast();
+
+            });
+        </script>
+    {% endfor %}
+{% endif %}
+<!--========================== Intro Section ============================-->
+<section id="intro">
+    <div class="intro-container">
+        <div
+            id="introCarousel"
+            class="carousel  slide carousel-fade"
+            data-ride="carousel">
+            <ol class="carousel-indicators"></ol>
+            <div class="carousel-inner" role="listbox">
+
+                <div class="carousel-item active">
+                    <div class="carousel-background"><img src="{% static 'img/intro-carousel/1.jpg' %}" alt=""></div>
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2>Bienvenue chez Trabelsi-taveaux</h2>
+                            <p>Nous proposons des solutions de conception et de développement web de haute
+                                qualité.</p>
+                            <a href="#featured-services" class="btn-get-started scrollto">Commencer</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="carousel-background"><img src="{% static 'img/intro-carousel/2.jpg' %}" alt=""></div>
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2>Découvrez des possibilités créatives</h2>
+                            <p>Notre équipe explore des idées innovantes pour donner vie à votre vision.</p>
+                            <a href="#featured-services" class="btn-get-started scrollto">Commencer</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="carousel-background"><img src="{% static 'img/intro-carousel/3.jpg' %}" alt=""></div>
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2>Votre succès est notre priorité</h2>
+                            <p>Nous vous aidons à atteindre vos objectifs avec notre expertise technique et
+                                notre approche stratégique.</p>
+                            <a href="#featured-services" class="btn-get-started scrollto">Commencer</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="carousel-background"><img src="{% static 'img/intro-carousel/4.jpg' %}" alt=""></div>
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2>Expérimentez l'excellence</h2>
+                            <p>Notre équipe veille à ce que chaque projet réponde aux normes de qualité les
+                                plus élevées.</p>
+                            <a href="#featured-services" class="btn-get-started scrollto">Commencer</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="carousel-item">
+                    <div class="carousel-background"><img src="{% static 'img/intro-carousel/5.jpg' %}" alt=""></div>
+                    <div class="carousel-container">
+                        <div class="carousel-content">
+                            <h2>Libérez votre créativité</h2>
+                            <p>Exprimez votre créativité et ayez un impact avec MarketMinds.</p>
+                            <a href="#featured-services" class="btn-get-started scrollto">Commencer</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <a
+                class="carousel-control-prev"
+                href="#introCarousel"
+                role="button"
+                data-slide="prev">
+                <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Précédent</span>
+            </a>
+
+            <a
+                class="carousel-control-next"
+                href="#introCarousel"
+                role="button"
+                data-slide="next">
+                <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Suivant</span>
+            </a>
+
+        </div>
+    </div>
+</section>
+
+<!-- #intro -->
+
+<main id="main">
+    <!--========================== Section À Propos de Nous
+    ============================-->
+    <section id="about">
+        <div class="container">
+
+            <header class="section-header">
+                <h3>À Propos de Nous</h3>
+                <p>
+                    MarketMinds, Ignition d'idées, Inspiration d'impact. Nous mélangeons
+                    perspicacité stratégique avec flair créatif, propulsant votre marque vers de
+                    nouveaux sommets. Élevez votre marketing avec la brillance de MarketMinds.
+                </p>
+            </header>
+
+            <div class="row about-cols">
+
+                <div class="col-md-4 wow fadeInUp">
+                    <div class="about-col">
+                        <div class="img">
+                            <img src="{% static 'img/about-mission.jpg' %}" alt="" class="img-fluid">
+                            <div class="icon">
+                                <i class="ion-ios-speedometer-outline"></i>
+                            </div>
+                        </div>
+                        <h2 class="title">
+                            <a href="#">Notre Mission</a>
+                        </h2>
+                        <p>
+                            Trabelsi-Travaux s'engage à fournir des solutions hautement efficaces d'isolation thermique et d'étanchéité 
+                            en utilisant le produit Derbigum. L'entreprise vise à assurer une protection optimale contre les éléments 
+                            extérieurs tout en offrant des services exceptionnels axés sur l'efficacité énergétique et la durabilité.
+                    </div>
+                </div>
+
+                <div class="col-md-4 wow fadeInUp" data-wow-delay="0.1s">
+                    <div class="about-col">
+                        <div class="img">
+                            <img src="{% static 'img/about-plan.jpg' %}" alt="" class="img-fluid">
+                            <div class="icon">
+                                <i class="ion-ios-list-outline"></i>
+                            </div>
+                        </div>
+                        <h2 class="title">
+                            <a href="#">Notre Plan</a>
+                        </h2>
+                        <p>
+                            La vision de Trabelsi-Travaux est de devenir un leader incontesté dans l'industrie de l'isolation thermique 
+                            et de l'étanchéité. Ils aspirent à être reconnus pour leur engagement envers l'innovation, la qualité des produits, 
+                            et la satisfaction client, contribuant ainsi à des environnements durables et éco-responsables.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="about-col">
+                        <div class="img">
+                            <img src="{% static 'img/about-vision.jpg' %}" alt="" class="img-fluid">
+                            <div class="icon">
+                                <i class="ion-ios-eye-outline"></i>
+                            </div>
+                        </div>
+                        <h2 class="title">
+                            <a href="#">Notre Vision</a>
+                        </h2>
+                        <p>
+                            Le plan de Trabelsi-Travaux inclut des investissements importants dans la R&D pour l'innovation, la formation du 
+                            personnel, des partenariats stratégiques, des pratiques éco-responsables, un service client exceptionnel, 
+                            et une expansion géographique.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+    <!-- #about -->
+</main>
+
+<!--========================== Section des Services
+============================-->
+<section id="services">
+    <div class="container">
+
+        <header class="section-header wow fadeInUp">
+            <h3>Nos Services</h3>
+            <p>Trabelsi-Travaux offre des services complets d'isolation thermique, d'étanchéité, et de gestion de projet, 
+                garantissant la durabilité et l'efficacité énergétique de vos structures.</p>
+        </header>
+
+        <div class="row">
+            {% for serv in services %}
+                <div class="col-lg-4 col-md-6 box wow bounceInUp" data-wow-duration="1.4s">
+                    <div class="icon">
+                        <i class="ion-ios-analytics-outline"></i>
+                    </div>
+                    <h4 class="title">
+                        <a href="">{{serv.type}}</a>
+                    </h4>
+                    <p class="description">{{serv.description}}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+<!-- #services -->
+
+<!--========================== Section Appel à l'Action
+============================-->
+{% if user.is_authenticated and user.is_admin %}
+    <!-- Afficher le contenu pour les utilisateurs admin authentifiés -->
+    <section id="call-to-action" class="wow fadeIn">
+        <div class="container text-center">
+            <h3  style="color: black;">Bienvenue Admin</h3>
+            <p  style="color: black;">Vous pouvez vérifier la liste des commandes d'ici !</p>
+            <a class="cta-btn" href="{% url 'comand_list' %}"  style="color: black; border: 1px solid black">Cliquez ici</a>
+        </div>
+    </section>
+{% elif user.is_authenticated %}
+    <!-- Afficher le contenu pour les utilisateurs non-admin authentifiés -->
+    <section id="call-to-action" class="wow fadeIn">
+        <div class="container text-center">
+            <h3>Appel à l'Action</h3>
+            <p>Avez-vous besoin de l'aide de notre équipe pour votre projet ? Contactez-nous
+                maintenant et demandez nos services !</p>
+            <!-- Déclencher le modal lors du clic sur le lien -->
+            <a class="cta-btn" href="#" data-toggle="modal" data-target="#getServicesModal">Obtenez Nos Services</a>
+        </div>
+    </section>
+    <form method="post" action="{% url 'get_services' %}">
+        {% csrf_token %}
+        <div
+            class="modal fade"
+            id="getServicesModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="getServicesModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="getServicesModalLabel">Ajouter une commande</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-container">
+                            <label
+                                for="text"
+                                style="display: block; margin-bottom: 8px; font-size: 16px; font-weight: 500; color: #555;">Sujet :</label>
+                            <input
+                                type="text"
+                                name="object"
+                                required="required"
+                                placeholder="Sujet"
+                                style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ffffff; border-radius: 5px; background-color: #f4f4f4; color: #333; box-sizing: border-box;">
+                            <label
+                                for="service_type"
+                                style="display: block; margin-bottom: 8px; font-size: 16px; font-weight: 500; color: #555;">Type de Service :</label>
+                            <select
+                                name="service_type"
+                                required="required"
+                                style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ffffff; border-radius: 5px; background-color: #f4f4f4; color: #333; box-sizing: border-box;">
+                                {% for serv in services %}
+                                    <option value="{{ serv.id }}">{{ serv.type }}</option>
+                                {% endfor %}
+                            </select>
+                            <label
+                                for="details"
+                                style="display: block; margin-bottom: 8px; font-size: 16px; font-weight: 500; color: #555;">Description de la Commande :</label>
+                            <textarea
+                                name="details"
+                                rows="5"
+                                required="required"
+                                placeholder="Message"
+                                style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ffffff; border-radius: 5px; background-color: #f4f4f4; color: #333; resize: vertical; box-sizing: border-box;"></textarea>
+
+                            <label for="completionTime">Temps d'achèvement :</label>
+                            <input
+                                type="datetime-local"
+                                id="completionTime"
+                                name="completionTime"
+                                required="required"
+                                style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ffffff; border-radius: 5px; background-color: #f4f4f4; color: #333; box-sizing: border-box;">
+
+                            <button
+                                type="button"
+                                id="showSecondFormBtn"
+                                style="width: 100%; padding: 15px;
+                                background-color: #2ecc71;
+                                color: #fff;
+                                font-size: 18px;
+                                font-weight: 600;
+                                border: none; border-radius: 5px;
+                                cursor: pointer; transition: background-color 0.3s;">Suivant</button>
+                            <div
+                                id="lll"
+                                style="margin-top: 20px; font-size: 15px; font-weight: bold; text-align: center;">
+                                <p>
+                                    <a href="#" style="color: #2ecc71;">Termes et Conditions</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Deuxième Modal du Formulaire -->
+        <div
+            class="modal fade"
+            id="secondFormModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="secondFormModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="secondFormModalLabel">
+                            <a href="#" class="btn btn-link" id="goBackToFirstFormBtn">
+                                <i
+                                    class="fa fa-arrow-left"
+                                    style="font-size: 20px; color: #242a26;"
+                                    aria-hidden="true"></i>
+                            </a>
+                            Vérifiez vos données</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Contenu du Deuxième Formulaire -->
+                        <label for="name">Nom :</label>
+                        <input
+                            type="text"
+                            id="name"
+                            value="{{user.name}}"
+                            name="name"
+                            required="required"
+                            style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ffffff; border-radius: 5px; background-color: #f4f4f4; color: #333; box-sizing: border-box;">
+
+                        <label for="phoneNumber">Numéro de Téléphone :</label>
+                        <input
+                            type="tel"
+                            id="phoneNumber"
+                            value="{{user.phone}}"
+                            name="phoneNumber"
+                            required="required"
+                            style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ffffff; border-radius: 5px; background-color: #f4f4f4; color: #333; box-sizing: border-box;">
+
+                        <label for="country">Pays :</label>
+                        <input
+                            type="text"
+                            id="country"
+                            value="{{user.country}}"
+                            name="country"
+                            required="required"
+                            style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ffffff; border-radius: 5px; background-color: #f4f4f4; color: #333; box-sizing: border-box;">
+
+                        <label for="address">Adresse Exacte :</label>
+                        <input
+                            id="address"
+                            value="{{user.address}}"
+                            name="address"
+                            rows="4"
+                            required="required"
+                            style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ffffff; border-radius: 5px; background-color: #f4f4f4; color: #333; resize: vertical; box-sizing: border-box;"></textarea>
+                    <button
+                        type="submit"
+                        name="commandebtn"
+                        style="width: 100%; padding: 15px;
+                            background-color: #2ecc71; color: #fff; font-size: 18px;
+                            font-weight: 600; border: none; border-radius: 5px;
+                            cursor: pointer; transition: background-color 0.3s;">
+                        Envoyer
+                    </button>
+                    <!-- Fin du Contenu du Deuxième Formulaire -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+<script>
+// Afficher le deuxième formulaire modal lors du clic sur le bouton
+document
+    .getElementById('showSecondFormBtn')
+    .addEventListener('click', function () {
+        $('#getServicesModal').modal('hide');
+        $('#secondFormModal').modal('show');
+    });
+
+// Revenir au premier formulaire lors du clic sur le bouton de retour
+document
+    .getElementById('goBackToFirstFormBtn')
+    .addEventListener('click', function () {
+        $('#secondFormModal').modal('hide');
+        $('#getServicesModal').modal('show');
+    });
+</script>
+
+{% endif %}
+
+<!--========================== Section Portfolio ============================-->
+<section id="portfolio" class="section-bg">
+<div class="container">
+
+    <header class="section-header">
+        <h3 class="section-title">Notre Portfolio</h3>
+    </header>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <ul id="portfolio-flters">
+                <li data-filter="*" class="filter-active">Tout</li>
+                <li data-filter=".filter-Design">Design</li>
+                <li data-filter=".filter-Event">Événement</li>
+                <li data-filter=".filter-web">Web</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row portfolio-container">
+        {% for projet in projets %}
+            <div
+                class="col-lg-4 col-md-6 portfolio-item filter-{{ projet.categorie }} wow fadeInUp">
+                <div class="portfolio-wrap">
+                    <figure>
+                        <img src="{{ projet.image.url }}" class="img-fluid" alt=""/>
+                        <a
+                            href="{{ projet.image.url }}"
+                            data-lightbox="portfolio"
+                            data-title="{{ projet.Libellai }}"
+                            class="link-preview"
+                            title="Aperçu">
+                            <i class="ion ion-eye"></i>
+                        </a>
+                        <a href="#" class="link-details" title="Plus de Détails">
+                            <i class="ion ion-android-open"></i>
+                        </a>
+                    </figure>
+
+                    <div class="portfolio-info">
+                        <h4>
+                            <a href="#">{{ projet.libellai }}</a>
+                        </h4>
+                        <p>{{ projet.categorie }}</p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+</div>
+</section>
+<!-- #portfolio -->
+<!--========================== Section Clients ============================-->
+<section id="clients" class="wow fadeInUp">
+<div class="container">
+
+    <header class="section-header">
+        <h3>Nos Clients</h3>
+    </header>
+
+    <div class="owl-carousel clients-carousel">
+        <img src="{% static 'img/clients/client-1.png' %}" alt="">
+        <img src="{% static 'img/clients/client-2.png' %}" alt="">
+        <img src="{% static 'img/clients/client-3.png' %}" alt="">
+        <img src="{% static 'img/clients/client-4.png' %}" alt="">
+        <img src="{% static 'img/clients/client-5.png' %}" alt="">
+        <img src="{% static 'img/clients/client-6.png' %}" alt="">
+        <img src="{% static 'img/clients/client-7.png' %}" alt="">
+        <img src="{% static 'img/clients/client-8.png' %}" alt="">
+    </div>
+
+</div>
+</section>
+<!-- #clients -->
+
+<!--========================== Section Témoignages
+============================-->
+<section id="testimonials" class="section-bg wow fadeInUp">
+<div class="container">
+
+    <header class="section-header">
+        <h3>Témoignages</h3>
+    </header>
+
+    <div class="owl-carousel testimonials-carousel">
+
+        <div class="testimonial-item">
+            <img src="{% static 'img/testimonial-1.jpg' %}" class="testimonial-img" alt="">
+            <h3>Saul Goodman</h3>
+            <h4>PDG & Fondateur</h4>
+            <p>
+                <img
+                    src="{% static 'img/quote-sign-left.png' %}"
+                    class="quote-sign-left"
+                    alt="">
+                MarketMinds a dépassé nos attentes ! Leur approche stratégique et leurs
+                solutions créatives ont transformé la visibilité de notre marque. L'engagement
+                et l'attention aux détails de l'équipe sont vraiment louables.
+                <img
+                    src="{% static 'img/quote-sign-right.png' %}"
+                    class="quote-sign-right"
+                    alt="">
+            </p>
+        </div>
+
+        <div class="testimonial-item">
+            <img src="{% static 'img/testimonial-2.jpg' %}" class="testimonial-img" alt="">
+            <h3>Sara Wilsson</h3>
+            <h4>Designer</h4>
+            <p>
+                <img
+                    src="{% static 'img/quote-sign-left.png' %}"
+                    class="quote-sign-left"
+                    alt="">
+                Travailler avec MarketMinds a été un changement de jeu pour notre entreprise.
+                Leurs idées innovantes et leur exécution sans faille ont considérablement
+                renforcé nos efforts marketing. Nous recommandons vivement leurs services !
+                <img
+                    src="{% static 'img/quote-sign-right.png' %}"
+                    class="quote-sign-right"
+                    alt="">
+            </p>
+        </div>
+
+        <div class="testimonial-item">
+            <img src="{% static 'img/testimonial-3.jpg'%}" class="testimonial-img" alt="">
+            <h3>Jena Karlis</h3>
+            <h4>Propriétaire de Magasin</h4>
+            <p>
+                <img
+                    src="{% static 'img/quote-sign-left.png' %}"
+                    class="quote-sign-left"
+                    alt="">
+                MarketMinds a obtenu des résultats exceptionnels, démontrant leur expertise dans
+                le paysage marketing en constante évolution. Leur engagement à comprendre notre
+                marque et notre public cible les distingue. Un partenariat vraiment précieux.
+                <img
+                    src="{% static 'img/quote-sign-right.png' %}"
+                    class="quote-sign-right"
+                    alt="">
+            </p>
+        </div>
+
+        <div class="testimonial-item">
+            <img src="{% static 'img/testimonial-4.jpg' %}" class="testimonial-img" alt="">
+            <h3>Matt Brandon</h3>
+            <h4>Freelancer</h4>
+            <p>
+                <img
+                    src="{% static 'img/quote-sign-left.png' %}"
+                    class="quote-sign-left"
+                    alt="">
+                Choisir MarketMinds a été l'une des meilleures décisions pour nos besoins en
+                marketing. La professionnalisme de leur équipe et leur capacité à s'adapter à
+                nos exigences uniques ont rendu la collaboration transparente. Notre marque a
+                connu une croissance remarquable sous leur direction.
+                <img
+                    src="{% static 'img/quote-sign-right.png' %}"
+                    class="quote-sign-right"
+                    alt="">
+            </p>
+        </div>
+
+        <div class="testimonial-item">
+            <img src="{% static 'img/testimonial-5.jpg' %}" class="testimonial-img" alt="">
+            <h3>John Larson</h3>
+            <h4>Entrepreneur</h4>
+            <p>
+                <img
+                    src="{% static 'img/quote-sign-left.png' %}"
+                    class="quote-sign-left"
+                    alt="">
+                MarketMinds est synonyme d'excellence. Leurs idées stratégiques et leur
+                savoir-faire créatif ont apporté une nouvelle perspective à nos campagnes. Nous
+                apprécions leur livraison constante de travaux de haute qualité et sommes
+                impatients de poursuivre le succès ensemble.
+                <img
+                    src="{% static 'img/quote-sign-right.png' %}"
+                    class="quote-sign-right"
+                    alt="">
+            </p>
+        </div>
+
+    </div>
+
+</div>
+</section>
+<!-- #testimonials -->
+{% if user.is_authenticated%}
+<!--========================== Section Équipe ============================-->
+<section id="team">
+    <div class="container">
+        <div class="section-header wow fadeInUp">
+            <h3>Équipe</h3>
+            <p>Présentation de notre Équipe de Productions Artistiques : Un Collectif de
+                Visionnaires Créatifs</p>
+        </div>
+
+        <div class="row">
+            {% for team in personnels %}
+                <div class="col-lg-3 col-md-6 wow fadeInUp">
+                    <div class="member">
+                        <img src="{{ team.photo.url }}" class="img-fluid" alt="">
+                        <div class="member-info">
+                            <div class="member-info-content">
+                                <h4>{{ team.name }}</h4>
+                                <span>{{ team.position }}</span>
+                                <div class="social">
+                                    <a href="">
+                                        <i class="fa fa-twitter"></i>
+                                    </a>
+                                    <a href="">
+                                        <i class="fa fa-facebook"></i>
+                                    </a>
+                                    <a href="">
+                                        <i class="fa fa-google-plus"></i>
+                                    </a>
+                                    <a href="">
+                                        <i class="fa fa-linkedin"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- #team -->
+{% endif%}
+
+<!--========================== Section Contact ============================-->
+<section id="contact" class="section-bg wow fadeInUp">
+
+    {% if user.is_authenticated %}
+
+        <div class="container">
+
+            <div class="section-header">
+                <h3>Contactez-nous</h3>
+                <p>Contactez-nous dès aujourd'hui pour discuter de vos aspirations artistiques.</p>
+            </div>
+
+            <div class="row contact-info">
+
+                <div class="col-md-4">
+                    <div class="contact-address">
+                        <i class="ion-ios-location-outline"></i>
+                        <h3>Adresse</h3>
+                        <address>
+                            Rue de Mahdia km 2.5 BP 88 A-3099
+                            <br>
+                            Sfax<br>
+                            Tunisie
+                        </address>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-phone">
+                        <i class="ion-ios-telephone-outline"></i>
+                        <h3>Numéro de téléphone</h3>
+                        <p>
+                            <a href="tel:+155895548855">+216 28 388 503</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-email">
+                        <i class="ion-ios-email-outline"></i>
+                        <h3>Email</h3>
+                        <p>
+                            <a href="mailto:info@example.com">boufaiedmortadha7@gmail.com</a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form">
+                {% if 'email_sent' %}
+                    <div id="sendmessage" style="text-align: center">Votre message a été envoyé. Merci !</div>
+                {% else %}
+                    <div id="errormessage" style="text-align: center">Une erreur est survenue. Veuillez réessayer plus tard.</div>
+                {% endif %}
+                <form
+                    action="{% url 'contact' %}"
+                    method="post"
+                    role="form"
+                    class="contactForm">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <input
+                            type="text"
+                            class="form-control"
+                            name="subject"
+                            id="subject"
+                            placeholder="Sujet"
+                            data-rule="minlen:4"
+                            data-msg="Veuillez entrer au moins 8 caractères pour le sujet"/>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="form-group">
+                        <textarea
+                            class="form-control"
+                            name="message"
+                            rows="5"
+                            data-rule="required"
+                            data-msg="Veuillez écrire quelque chose pour nous"
+                            placeholder="Message"></textarea>
+                        <div class="validation"></div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" name="contactbtn">Envoyer le message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% else %}
+        <p style="text-align: center">Veuillez vous
+            <a href="{% url 'login' %}">connecter</a>
+            pour nous contacter.</p>
+
+    {% endif %}
+</section>
+
+</main>
+
+<!--========================== Pied de page ============================-->
+<footer id="footer">
+<div class="footer-top">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-3 col-md-6 footer-info">
+                <h3>Trabelsi</h3>
+                <p>MarketMinds : Où l'art et l'innovation convergent - Inspirant des productions
+                    artistiques extraordinaires.</p>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+                <h4>Liens Utiles</h4>
+                <ul>
+                    <li>
+                        <i class="ion-ios-arrow-right"></i>
+                        <a href="#">Accueil</a>
+                    </li>
+                    <li>
+                        <i class="ion-ios-arrow-right"></i>
+                        <a href="#">À propos de nous</a>
+                    </li>
+                    <li>
+                        <i class="ion-ios-arrow-right"></i>
+                        <a href="#">Services</a>
+                    </li>
+                    <li>
+                        <i class="ion-ios-arrow-right"></i>
+                        <a href="#">Conditions de service</a>
+                    </li>
+                    <li>
+                        <i class="ion-ios-arrow-right"></i>
+                        <a href="#">Politique de confidentialité</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-contact">
+                <h4>Contactez-nous</h4>
+                <p>
+                    Rue de Mahdia km 2.5 BP 88 A-3099
+                    <br>
+                    Sfax<br>
+                    Tunisie
+                    <br>
+                    <strong>Téléphone :</strong>
+                    +216 28 388 503<br>
+                    <strong>Email :</strong>
+                    boufaiedmortadha7@gmail.com<br>
+                </p>
+
+                <div class="social-links">
+                    <a href="#" class="twitter">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#" class="facebook">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a href="#" class="instagram">
+                        <i class="fa fa-instagram"></i>
+                    </a>
+                    <a href="#" class="google-plus">
+                        <i class="fa fa-google-plus"></i>
+                    </a>
+                    <a href="#" class="linkedin">
+                        <i class="fa fa-linkedin"></i>
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-newsletter">
+                <h4>Notre Newsletter</h4>
+                <p>Restez informé des actualités artistiques, des événements et des offres.
+                    Abonnez-vous pour des mises à jour, des présentations d'artistes et des annonces
+                    d'expositions. Rejoignez notre communauté créative !</p>
+                <form action="" method="post">
+                    <input type="email" name="email"><input type="submit" value="S'abonner">
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+</footer>
+<!-- #footer -->
+
+<a href="#" class="back-to-top">
+<i class="fa fa-chevron-up"></i>
+</a>
+
+<!-- Décommentez ci-dessous si vous souhaitez utiliser un préchargeur -->
+<!-- <div id="preloader"></div> -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+
+<!-- Bibliothèques JavaScript -->
+<script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+<script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'lib/easing/easing.min.js' %}"></script>
+<script src="{% static 'lib/superfish/hoverIntent.js' %}"></script>
+<script src="{% static 'lib/superfish/superfish.min.js' %}"></script>
+<script src="{% static 'lib/wow/wow.min.js' %}"></script>
+<script src="{% static 'lib/waypoints/waypoints.min.js' %}"></script>
+<script src="{% static 'lib/counterup/counterup.min.js' %}"></script>
+<script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+<script src="{% static 'lib/isotope/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'lib/lightbox/js/lightbox.min.js' %}"></script>
+<script src="{% static 'lib/touchSwipe/jquery.touchSwipe.min.js' %}"></script>
+<!-- Fichier JavaScript du formulaire de contact -->
+<script src="contactform/contactform.js"></script>
+
+<!-- Fichier JavaScript principal du modèle -->
+<script src="{% static 'js/main.js' %}"></script>
+<script src="js/script.js"></script>
+
+</body>
+</html>
