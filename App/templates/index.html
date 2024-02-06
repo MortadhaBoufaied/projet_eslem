@@ -67,14 +67,12 @@
                         <li>
                             <a href="#services">Services</a>
                         </li>
-                        {% if user.is_authenticated %}
-                            <li>
-                                <a href="#portfolio">Portfolio</a>
-                            </li>
-                            <li>
-                                <a href="#team">Equipe</a>
-                            </li>
-                        {% endif %}
+                        <li>
+                            <a href="#portfolio">Portfolio</a>
+                        </li>
+<!--                    <li>
+                            <a href="#team">Equipe</a>
+                        </li> -->
                         <li>
                             <a href="#contact">Contact</a>
                         </li>
@@ -144,63 +142,61 @@
             <div class="carousel-inner" role="listbox">
 
                 <div class="carousel-item active">
-                    <div class="carousel-background"><img src="{% static 'img/intro-carousel/1.jpg' %}" alt=""></div>
+                    <div class="carousel-background"><img src="{% static 'img/intro_carousel/1.jpg' %}" alt=""></div>
                     <div class="carousel-container">
                         <div class="carousel-content">
-                            <h2>Bienvenue chez Trabelsi-taveaux</h2>
-                            <p>Nous proposons des solutions de conception et de développement web de haute
-                                qualité.</p>
-                            <a href="#featured-services" class="btn-get-started scrollto">Commencer</a>
+                            <h2>Bienvenue chez Trabelsi-travaux</h2>
+                            <p>Nous sommes spécialisés dans l'isolation thermique, protégeant efficacement contre les intempéries, 
+                                les pluies, et les fuites d'eau du toit grâce à notre expertise en étanchéité avec Derbihum.</p>
+                            <a href="#services" class="btn-get-started scrollto">Commencer</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="carousel-item">
-                    <div class="carousel-background"><img src="{% static 'img/intro-carousel/2.jpg' %}" alt=""></div>
+                    <div class="carousel-background"><img src="{% static 'img/intro_carousel/2.jpg' %}" alt=""></div>
                     <div class="carousel-container">
                         <div class="carousel-content">
                             <h2>Découvrez des possibilités créatives</h2>
                             <p>Notre équipe explore des idées innovantes pour donner vie à votre vision.</p>
-                            <a href="#featured-services" class="btn-get-started scrollto">Commencer</a>
+                            <a href="#services" class="btn-get-started scrollto">Commencer</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="carousel-item">
-                    <div class="carousel-background"><img src="{% static 'img/intro-carousel/3.jpg' %}" alt=""></div>
+                    <div class="carousel-background"><img src="{% static 'img/intro_carousel/3.jpg' %}" alt=""></div>
                     <div class="carousel-container">
                         <div class="carousel-content">
                             <h2>Votre succès est notre priorité</h2>
                             <p>Nous vous aidons à atteindre vos objectifs avec notre expertise technique et
                                 notre approche stratégique.</p>
-                            <a href="#featured-services" class="btn-get-started scrollto">Commencer</a>
+                            <a href="#services" class="btn-get-started scrollto">Commencer</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="carousel-item">
-                    <div class="carousel-background"><img src="{% static 'img/intro-carousel/4.jpg' %}" alt=""></div>
+                    <div class="carousel-background"><img src="{% static 'img/intro_carousel/4.jpg' %}" alt=""></div>
                     <div class="carousel-container">
                         <div class="carousel-content">
                             <h2>Expérimentez l'excellence</h2>
                             <p>Notre équipe veille à ce que chaque projet réponde aux normes de qualité les
                                 plus élevées.</p>
-                            <a href="#featured-services" class="btn-get-started scrollto">Commencer</a>
+                            <a href="#services" class="btn-get-started scrollto">Commencer</a>
                         </div>
                     </div>
-                </div>
 
-                <div class="carousel-item">
-                    <div class="carousel-background"><img src="{% static 'img/intro-carousel/5.jpg' %}" alt=""></div>
-                    <div class="carousel-container">
-                        <div class="carousel-content">
-                            <h2>Libérez votre créativité</h2>
-                            <p>Exprimez votre créativité et ayez un impact avec MarketMinds.</p>
-                            <a href="#featured-services" class="btn-get-started scrollto">Commencer</a>
+                    <div class="carousel-item">
+                        <div class="carousel-background"><img src="{% static 'img/intro_carousel/5.jpg' %}" alt=""></div>
+                        <div class="carousel-container">
+                            <div class="carousel-content">
+                                <h2>Optimisez votre espace de vie</h2>
+                                <p>Transformez votre environnement avec Trabelsi-Travaux. Notre expertise en isolation thermique assure non seulement la protection contre les intempéries mais aussi une optimisation de votre espace pour un confort optimal.</p>
+                                <a href="#services" class="btn-get-started scrollto">Découvrir nos services</a>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
+                    </div>                    
             </div>
 
             <a
@@ -234,11 +230,9 @@
         <div class="container">
 
             <header class="section-header">
-                <h3>À Propos de Nous</h3>
+                <h3>À Propos de Trabelsi-Travaux</h3>
                 <p>
-                    MarketMinds, Ignition d'idées, Inspiration d'impact. Nous mélangeons
-                    perspicacité stratégique avec flair créatif, propulsant votre marque vers de
-                    nouveaux sommets. Élevez votre marketing avec la brillance de MarketMinds.
+                    Trabelsi-Travaux se dédie à l'excellence dans l'isolation thermique, offrant des solutions innovantes pour protéger votre espace contre les pluies et l'échappement d'eau du toit. Notre équipe fusionne une expertise technique approfondie avec une approche stratégique, assurant que chaque projet répond aux normes de qualité les plus élevées.
                 </p>
             </header>
 
@@ -547,9 +541,9 @@ document
         <div class="col-lg-12">
             <ul id="portfolio-flters">
                 <li data-filter="*" class="filter-active">Tout</li>
-                <li data-filter=".filter-Design">Design</li>
-                <li data-filter=".filter-Event">Événement</li>
-                <li data-filter=".filter-web">Web</li>
+                <li data-filter=".filter-Design">Isolation</li>
+                <li data-filter=".filter-Event">Protection</li>
+                <li data-filter=".filter-web">Manipulation</li>
             </ul>
         </div>
     </div>
@@ -589,7 +583,7 @@ document
 </section>
 <!-- #portfolio -->
 <!--========================== Section Clients ============================-->
-<section id="clients" class="wow fadeInUp">
+<!-- <section id="clients" class="wow fadeInUp">
 <div class="container">
 
     <header class="section-header">
@@ -608,8 +602,8 @@ document
     </div>
 
 </div>
-</section>
-<!-- #clients -->
+</section> -->
+<!-- #clients --> 
 
 <!--========================== Section Témoignages
 ============================-->
@@ -724,9 +718,9 @@ document
 </div>
 </section>
 <!-- #testimonials -->
-{% if user.is_authenticated%}
+<!-- {% if user.is_authenticated%} -->
 <!--========================== Section Équipe ============================-->
-<section id="team">
+<!-- <section id="team">
     <div class="container">
         <div class="section-header wow fadeInUp">
             <h3>Équipe</h3>
@@ -764,9 +758,9 @@ document
             {% endfor %}
         </div>
     </div>
-</section>
+</section> -->
 <!-- #team -->
-{% endif%}
+<!-- {% endif%} -->
 
 <!--========================== Section Contact ============================-->
 <section id="contact" class="section-bg wow fadeInUp">
@@ -800,7 +794,7 @@ document
                         <i class="ion-ios-telephone-outline"></i>
                         <h3>Numéro de téléphone</h3>
                         <p>
-                            <a href="tel:+155895548855">+216 28 388 503</a>
+                            <a href="tel:+155895548855">+216 23 919 551</a>
                         </p>
                     </div>
                 </div>
@@ -810,11 +804,10 @@ document
                         <i class="ion-ios-email-outline"></i>
                         <h3>Email</h3>
                         <p>
-                            <a href="mailto:info@example.com">boufaiedmortadha7@gmail.com</a>
+                            <a href="mailto:info@example.com">trabelsitravaux@gmail.com</a>
                         </p>
                     </div>
                 </div>
-
             </div>
 
             <div class="form">
@@ -868,90 +861,59 @@ document
 
 <!--========================== Pied de page ============================-->
 <footer id="footer">
-<div class="footer-top">
-    <div class="container">
-        <div class="row">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
 
-            <div class="col-lg-3 col-md-6 footer-info">
-                <h3>Trabelsi</h3>
-                <p>MarketMinds : Où l'art et l'innovation convergent - Inspirant des productions
-                    artistiques extraordinaires.</p>
-            </div>
+                <div class="col-lg-3 col-md-6 footer-info">
+                    <h3>Trabelsi-Travaux</h3>
+                    <p>Spécialistes de l'isolation thermique contre les pluies et l'échappement d'eau du toit. Nous assurons une protection optimale pour votre espace avec notre expertise en étanchéité Derbihum.</p>
+                </div>
 
-            <div class="col-lg-3 col-md-6 footer-links">
-                <h4>Liens Utiles</h4>
-                <ul>
-                    <li>
-                        <i class="ion-ios-arrow-right"></i>
-                        <a href="#">Accueil</a>
-                    </li>
-                    <li>
-                        <i class="ion-ios-arrow-right"></i>
-                        <a href="#">À propos de nous</a>
-                    </li>
-                    <li>
-                        <i class="ion-ios-arrow-right"></i>
-                        <a href="#">Services</a>
-                    </li>
-                    <li>
-                        <i class="ion-ios-arrow-right"></i>
-                        <a href="#">Conditions de service</a>
-                    </li>
-                    <li>
-                        <i class="ion-ios-arrow-right"></i>
-                        <a href="#">Politique de confidentialité</a>
-                    </li>
-                </ul>
-            </div>
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Liens Utiles</h4>
+                    <ul>
+                        <li><i class="ion-ios-arrow-right"></i><a href="#">Accueil</a></li>
+                        <li><i class="ion-ios-arrow-right"></i><a href="#">À propos de nous</a></li>
+                        <li><i class="ion-ios-arrow-right"></i><a href="#">Services</a></li>
+                        <li><i class="ion-ios-arrow-right"></i><a href="#">Conditions de service</a></li>
+                        <li><i class="ion-ios-arrow-right"></i><a href="#">Politique de confidentialité</a></li>
+                    </ul>
+                </div>
 
-            <div class="col-lg-3 col-md-6 footer-contact">
-                <h4>Contactez-nous</h4>
-                <p>
-                    Rue de Mahdia km 2.5 BP 88 A-3099
-                    <br>
-                    Sfax<br>
-                    Tunisie
-                    <br>
-                    <strong>Téléphone :</strong>
-                    +216 28 388 503<br>
-                    <strong>Email :</strong>
-                    boufaiedmortadha7@gmail.com<br>
-                </p>
+                <div class="col-lg-3 col-md-6 footer-contact">
+                    <h4>Contactez-nous</h4>
+                    <p>
+                        Rue de Mahdia km 2.5 BP 88 A-3099
+                        <br>
+                        Gabes<br>
+                        Tunisie
+                        <br>
+                        <strong>Téléphone :</strong> +216 23 919 551<br>
+                        <strong>Email :</strong> trabelsitravaux@gmail.com<br>
+                    </p>
 
-                <div class="social-links">
-                    <a href="#" class="twitter">
-                        <i class="fa fa-twitter"></i>
-                    </a>
-                    <a href="#" class="facebook">
-                        <i class="fa fa-facebook"></i>
-                    </a>
-                    <a href="#" class="instagram">
-                        <i class="fa fa-instagram"></i>
-                    </a>
-                    <a href="#" class="google-plus">
-                        <i class="fa fa-google-plus"></i>
-                    </a>
-                    <a href="#" class="linkedin">
-                        <i class="fa fa-linkedin"></i>
-                    </a>
+                    <div class="social-links">
+                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
+                        <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-newsletter">
+                    <h4>Notre Newsletter</h4>
+                    <p>Restez informé des dernières innovations en matière d'isolation thermique. Abonnez-vous pour recevoir des mises à jour sur nos services, des conseils d'experts et des offres exclusives.</p>
+                    <form action="" method="post">
+                        <input type="email" name="email" placeholder="Votre email"><input type="submit" value="S'abonner">
+                    </form>
                 </div>
 
             </div>
-
-            <div class="col-lg-3 col-md-6 footer-newsletter">
-                <h4>Notre Newsletter</h4>
-                <p>Restez informé des actualités artistiques, des événements et des offres.
-                    Abonnez-vous pour des mises à jour, des présentations d'artistes et des annonces
-                    d'expositions. Rejoignez notre communauté créative !</p>
-                <form action="" method="post">
-                    <input type="email" name="email"><input type="submit" value="S'abonner">
-                </form>
-            </div>
-
         </div>
     </div>
-</div>
 </footer>
+
 <!-- #footer -->
 
 <a href="#" class="back-to-top">

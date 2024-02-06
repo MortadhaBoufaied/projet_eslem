@@ -1,5 +1,4 @@
 /* Google Fonts - Poppins */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
 
 *{
     margin: 0;
@@ -13,7 +12,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgb(195, 210, 150);
+    background: rgb(243, 243, 243);
     column-gap: 30px;
 }
 .form{
