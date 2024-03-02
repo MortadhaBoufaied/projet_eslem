@@ -1326,8 +1326,8 @@ body {
     cursor: pointer;
   }
   
-  #contact .form button[type="submit"]:hover {
-    background: #13a456;
+  #contact .form #contactbtn:hover {
+    background-color: #ad6f13;
   }
   
   /*--------------------------------------------------------------
@@ -1479,7 +1479,7 @@ body {
   }
   
   #footer .footer-top .footer-newsletter input[type="submit"]:hover {
-    background: #13a456;
+    background: rgb(150, 108, 18);
   }
   
   #footer .copyright {

@@ -31,7 +31,7 @@
         <link href="{% static 'lib/lightbox/css/lightbox.min.css' %}" rel="stylesheet">
 
         <!-- Main Stylesheet File -->
-        <link rel="stylesheet" href="{% static 'css_files/style.css' %}">
+        <link rel="stylesheet" href="{% static 'cssFiles/style.css' %}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link  
             rel="stylesheet"
@@ -46,6 +46,7 @@
             .produit {
                 font-size: larger; font-weight: bold; font-family:'Franklin Gothic Medium'; text-align: center;
             }
+
         </style>
 
     </head>
@@ -863,7 +864,7 @@ document
                         <div class="validation"></div>
                     </div>
                     <div class="text-center">
-                        <button type="submit" name="contactbtn">Envoyer le message</button>
+                        <button type="submit" class="contactbtn" name="contactbtn">Envoyer le message</button>
                     </div>
                 </form>
             </div>

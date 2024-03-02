@@ -59,7 +59,7 @@ nav .navitem {
 }
 
 nav .navitem:hover {
-    background-color: #45a049;
+    background-color: #d5ac3b;
 }
 
 .dropdown {
@@ -90,7 +90,7 @@ nav .navitem:hover {
 }
 
 .dropdown-content a:hover {
-    background-color: #45a049;
+    background-color: #d5ac3b;
 }
 
 /* Main content styles */
@@ -178,7 +178,7 @@ button {
 }
 
 button:hover {
-    background-color: #45a049;
+    background-color: #d5ac3b;
 }
 
 #details {
