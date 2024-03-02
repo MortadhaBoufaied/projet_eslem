@@ -80,13 +80,14 @@
                             {% endfor %}
 
                             <div class="form-link">
-                                <a href="{% url 'password_reset' %}" class="forgot-pass">Forgot password?</a>
+                                <a href="{% url 'password_reset' %}" class="forgot-pass"  style="position: relative; top: 20px;">Forgot password?</a>
                             </div>
 
-                            <div class="field button-field">
+                            <div class="field button-field"  style="margin-top: 32px;">
                                 <button type='submit'>Login</button>
                             </div>
                         </form>
+                        <div class="line"></div>
 
                         <div class="form-link">
                             <span>Don't have an account?
@@ -95,9 +96,8 @@
                         </div>
                     </div>
 
-                    <div class="line"></div>
 
-                    <div class="media-options">
+                    <!-- <div class="media-options">
                         <a href="#" class="field facebook">
                             <i class='bx bxl-facebook facebook-icon'></i>
                             <span>Login with Facebook</span>
@@ -109,7 +109,7 @@
                             <img src="{% static 'img/google.png' %}" alt="" class="google-img">
                             <span>Login with Google</span>
                         </a>
-                    </div>
+                    </div> -->
 
                 </div>
 
@@ -162,6 +162,8 @@
                             </div>
                         </form>
 
+                        <div class="line"></div>
+
                         <div class="form-link">
                             <span>Already have an account?
                                 <a href="#" class="link login-link">Login</a>
@@ -169,8 +171,7 @@
                         </div>
                     </div>
 
-                    <div class="line"></div>
-
+<!-- 
                     <div class="media-options">
                         <a href="#" class="field facebook">
                             <i class='bx bxl-facebook facebook-icon'></i>
@@ -183,7 +184,7 @@
                             <img src="{% static 'img/google.png' %}" alt="" class="google-img">
                             <span>Login with Google</span>
                         </a>
-                    </div>
+                    </div> -->
 
                 </div>
             </section>

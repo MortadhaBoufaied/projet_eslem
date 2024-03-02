@@ -39,8 +39,6 @@ def LoginView(request):
     return render(request, 'login.html', {'form': form})
 
 # hold the signup
-import random
-import string
 
 from django.shortcuts import render, redirect
 from django.views import View
