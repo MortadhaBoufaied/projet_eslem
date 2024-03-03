@@ -27,7 +27,7 @@
                 font-size: 35px;
             }
             .vl {
-                border-left: 6px solid #4CAF50;
+                border-left: 6px solid #d28818;
                 height: 35px;
                 margin-top: 5px;
                 margin-bottom: -50px;
@@ -63,7 +63,7 @@
 
             /* Add this rule to style the active state of the sidebar link */
             #sidebarnav .sidebar-item.active > a {
-                background-color: #4CAF50;
+                background-color: #d28818;
                 /* Active background color */
                 color: #ffffff !important;
                 /* Active text color */
@@ -78,7 +78,7 @@
             }
             /* Style for the "Accepted Commands" link */
             #sidebarnav .sidebar-item.accepted-commands > a {
-                background-color: #4CAF50;
+                background-color: #d28818;
                 /* Green background color */
                 color: #ffffff !important;
                 /* White text color */
@@ -108,7 +108,7 @@
             }
 
             .dropdown-menu a:hover {
-                color: #4CAF50;
+                color: #d28818;
             }
         </style>
     </head>
@@ -137,8 +137,8 @@
                         <a class="navbar-brand ms-4" href="{% url 'index' %}">
                             <div class="vl"></div>
                             <div id="logo" class="pull-left">
-                                <h1>
-                                    <a href="#intro" class="scrollto">MarketMinds</a>
+                                <h1 style="width: 280px;">
+                                    <a href="#intro" class="scrollto">Trabelsi-Traveaux</a>
                                 </h1>
                             </div>
                         </a>
@@ -247,6 +247,15 @@
                     <br/><br/>
                     <nav class="">
                         <ul id="sidebarnav">
+                            <li class="sidebar-item">
+                                <a
+                                    class="sidebar-link waves-effect waves-dark"
+                                    href="{% url 'index' %}"
+                                    aria-expanded="false">
+                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    <span class="hide-menu">Home</span>
+                                </a>
+                            </li>
                             <li class="sidebar-item">
                                 <a
                                     class="sidebar-link waves-effect waves-dark"
@@ -381,8 +390,8 @@
                                                             <td>{{ command.service_type.type }}</td>
                                                             <td>{{ command.submission_date }}</td>
                                                             <td>
-                                                                <button type="button" 
-                                                                class="btn btn-success" 
+                                                                <button type="button"
+                                                                class="btn btn-success"
                                                                 id="accept-btn"
                                                                 data-toggle="modal"
                                                                 data-target="#acceptModal{{ command.id }}">

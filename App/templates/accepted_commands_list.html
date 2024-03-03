@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Accepted Commands List</title>
         {% load static %}
+
         <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -26,7 +27,7 @@
                 font-size: 35px;
             }
             .vl {
-                border-left: 6px solid #4CAF50;
+                border-left: 6px solid #d28818;
                 height: 35px;
                 margin-top: 5px;
                 margin-bottom: -50px;
@@ -62,7 +63,7 @@
 
             /* Add this rule to style the active state of the sidebar link */
             #sidebarnav .sidebar-item.active > a {
-                background-color: #4CAF50;
+                background-color: #d28818;
                 /* Active background color */
                 color: #ffffff !important;
                 /* Active text color */
@@ -77,7 +78,7 @@
             }
             /* Style for the "Accepted Commands" link */
             #sidebarnav .sidebar-item.accepted-commands > a {
-                background-color: #4CAF50;
+                background-color: #d28818;
                 /* Green background color */
                 color: #ffffff !important;
                 /* White text color */
@@ -107,9 +108,11 @@
             }
 
             .dropdown-menu a:hover {
-                color: #4CAF50;
+                color: #d28818;
             }
         </style>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     </head>
 
     <body>
@@ -136,8 +139,8 @@
                         <a class="navbar-brand ms-4" href="{% url 'index' %}">
                             <div class="vl"></div>
                             <div id="logo" class="pull-left">
-                                <h1>
-                                    <a href="#intro" class="scrollto">MarketMinds</a>
+                                <h1 style="width: 280px;">
+                                    <a href="#intro" class="scrollto">Trabelsi-Traveaux</a>
                                 </h1>
                             </div>
                         </a>
@@ -180,7 +183,8 @@
                                             data-bs-toggle="dropdown"
                                             aria-expanded="false"
                                             onclick="toggleDropdown()">
-                                            <img src="{{ user.photo.url }}" alt="user" class="profile-pic me-2">{{user.name}} 𝅎
+                                            <img src="{{ user.photo.url }}" alt="user" class="profile-pic me-2">{{user.name}}
+                                            𝅎
                                         </a>
                                         <ul
                                             id="userDropdownMenu"
@@ -202,7 +206,8 @@
                                             <img
                                                 src="{% static 'images/unknown.jpeg' %}"
                                                 alt="user"
-                                                class="profile-pic me-2">{{user.name}} 𝅎
+                                                class="profile-pic me-2">{{user.name}}
+                                            𝅎
                                         </a>
                                         <ul
                                             id="userDropdownMenu"
@@ -247,6 +252,15 @@
                             <li class="sidebar-item">
                                 <a
                                     class="sidebar-link waves-effect waves-dark"
+                                    href="{% url 'index' %}"
+                                    aria-expanded="false">
+                                    <i class="fa fa-home" aria-hidden="true"></i>
+                                    <span class="hide-menu">Home</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a
+                                    class="sidebar-link waves-effect waves-dark"
                                     href="{% url 'dashboard' %}"
                                     aria-expanded="false">
                                     <i class="mdi me-2 mdi-gauge"></i>
@@ -270,7 +284,7 @@
                                     <i class="mdi me-2 mdi-table"></i>
                                     <span class="hide-menu">List of commands</span></a>
                             </li>
-                            <li class="sidebar-item accepted-commands">
+                            <li class="sidebar-item  accepted-commands">
                                 <!-- Add class to the specific item -->
                                 <a
                                     class="sidebar-link waves-effect waves-dark sidebar-link"
@@ -288,14 +302,13 @@
                                     <span class="hide-menu">Completed tasks</span></a>
                             </li>
                         </ul>
+
                     </nav>
                     <!-- End Sidebar navigation -->
                 </div>
-                <!-- End Sidebar scroll-->
                 <div class="sidebar-footer">
                     <div class="row">
                         <div class="col-4 link-wrap">
-                            <!-- item-->
                             <a
                                 href=""
                                 class="link"
@@ -306,7 +319,6 @@
                             </a>
                         </div>
                         <div class="col-4 link-wrap">
-                            <!-- item-->
                             <a
                                 href=""
                                 class="link"
@@ -317,7 +329,6 @@
                             </a>
                         </div>
                         <div class="col-4 link-wrap">
-                            <!-- item-->
                             <a
                                 href=""
                                 class="link"
@@ -330,77 +341,104 @@
                     </div>
                 </div>
             </aside>
-
             <div class="page-wrapper">
                 <div class="page-breadcrumb">
                     <div class="row align-items-center">
                         <div class="col-md-6 col-8 align-self-center">
+                            <h3 class="page-title mb-0 p-0">Dashboard</h3>
                             <div class="d-flex align-items-center">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item">
                                             <a href="#">Home</a>
                                         </li>
-                                        <li class="breadcrumb-item active" aria-current="page">Table</li>
+                                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
                                     </ol>
                                 </nav>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-sm-12">
+                        <div class="col-lg-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Accepted Commands List</h4>
-                                    <h6 class="card-subtitle">Add your subtitle here</h6>
-                                    <div class="table-responsive">
+                                    <h3 class="card-title">Additional Data</h3>
+                                    <hr class="mt-0 mb-0">
+                                    <div class="card-body text-left">
+                                        <table class="table">
+                                            <tr>
+                                                <th>Total Incomes</th>
+                                                <td>{{ total_incomes }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Best Customer</th>
+                                                <td>{{ best_customer.client__name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Most Sold Service</th>
+                                                <td>{{ most_sold_service.service_type__type }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Least Sold Service</th>
+                                                <td>{{ least_sold_service.service_type__type }}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3 class="card-title">Command Statistics</h3>
+                                    <hr class="mt-0 mb-0">
+                                    <div class="card-body text-left">
+                                        <table class="table">
+                                            <tr>
+                                                <th>Total Commands</th>
+                                                <td>{{ total_commands }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Total Accepted Commands</th>
+                                                <td>{{ total_accepted_commands }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Total Completed Commands</th>
+                                                <td>{{ total_completed_commands }}</td>
+                                            </tr>
+                                            <tr>
+                                                <th>Total Completed Commands This Month</th>
+                                                <td>{{ total_completed_commands_this_month }}</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h3 class="card-title">Service Type Distribution</h3>
+                                    <hr class="mt-0 mb-0">
+                                    <div class="card-body text-center">
                                         <table class="table user-table">
                                             <thead>
                                                 <tr>
-                                                    <th>Command ID</th>
-                                                    <th>Client Name</th>
                                                     <th>Service Type</th>
-                                                    <th>Price</th>
-                                                    <th>Submission Date</th>
-                                                    <th>Accepted Date</th>
-                                                    <th>Action</th>
+                                                    <th>Percentage</th>
+                                                    <th>Number of Commands</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {% if accepted_commands %}
-                                                    {% for accepted_command in accepted_commands %}
-                                                        <tr>
-                                                            <td>{{ accepted_command.command.id }}</td>
-                                                            <td>{{ accepted_command.command.client.name }}</td>
-                                                            <td>{{ accepted_command.command.service_type.type }}</td>
-                                                            <td>{{ accepted_command.command.price }}</td>
-                                                            <td>{{ accepted_command.command.submission_date }}</td>
-                                                            <td>{{ accepted_command.acceptance_date }}</td>
-                                                            <td>
-                                                                {% if not accepted_command.command.is_completed %}
-                                                                    <form
-                                                                        method="post"
-                                                                        action="{% url 'complete_accepted_command' accepted_command.id %}">
-                                                                        {% csrf_token %}
-                                                                        <button
-                                                                            type="submit"
-                                                                            class="btn btn-primary"
-                                                                            style="background-color: #4CAF50; border-color: #4CAF50; color: white;">
-                                                                            Mark as Completed
-                                                                        </button>
-                                                                    </form>
-                                                                {% endif %}
-                                                            </td>
-                                                        </tr>
-                                                    {% endfor %}
-                                                {% else %}
+                                                {% for service_type_info in service_type_data %}
                                                     <tr>
-                                                        <td colspan="6">No accepted commands available.</td>
+                                                        <td>{{ service_type_info.type }}</td>
+                                                        <td>{{ service_type_info.percentage|floatformat:2 }}%</td>
+                                                        <td>{{ service_type_info.service_type_count }}</td>
                                                     </tr>
-                                                {% endif %}
+                                                {% endfor %}
                                             </tbody>
                                         </table>
                                     </div>
@@ -409,38 +447,30 @@
                         </div>
                     </div>
                 </div>
-            </div>
 
             <script src="{% static 'admin/assets/plugins/jquery/dist/jquery.min.js' %}"></script>
+            <!-- Bootstrap tether Core JavaScript -->
             <script
                 src="{% static 'admin/assets/plugins/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
             <script src="{% static 'admin/js/app-style-switcher.js' %}"></script>
+            <!--Wave Effects -->
             <script src="{% static 'admin/js/waves.js' %}"></script>
+            <!--Menu sidebar -->
             <script src="{% static 'admin/js/sidebarmenu.js' %}"></script>
+            <!-- ============================================================== -->
+            <!-- This page plugins -->
+            <!-- ============================================================== -->
+            <!-- chartist chart -->
+            <script
+                src="{% static 'admin/assets/plugins/chartist-js/dist/chartist.min.js' %}"></script>
+            <script
+                src="{% static 'admin/assets/plugins/chartist-plugin-tooltip-master/dist/chartist-plugin-tooltip.min.js' %}"></script>
+            <!--c3 JavaScript -->
+            <script src="{% static 'admin/assets/plugins/d3/d3.min.js' %}"></script>
+            <script src="{% static 'admin/assets/plugins/c3-master/c3.min.js' %}"></script>
+            <!--Custom JavaScript -->
+            <script src="{% static 'admin/js/pages/dashboards/dashboard1.js' %}"></script>
             <script src="{% static 'admin/js/custom.js' %}"></script>
-
-            <script>
-                function toggleDropdown() {
-                    var dropdownMenu = document.getElementById("userDropdownMenu");
-                    dropdownMenu
-                        .classList
-                        .toggle("show");
-                }
-
-                // Close the dropdown when clicking outside
-                window.onclick = function (event) {
-                    if (!event.target.matches('.nav-link.dropdown-toggle')) {
-                        var dropdowns = document.getElementsByClassName("dropdown-menu");
-                        for (var i = 0; i < dropdowns.length; i++) {
-                            var openDropdown = dropdowns[i];
-                            if (openDropdown.classList.contains('show')) {
-                                openDropdown
-                                    .classList
-                                    .remove('show');
-                            }
-                        }
-                    }
-                }
-            </script>
         </body>
+
     </html>
